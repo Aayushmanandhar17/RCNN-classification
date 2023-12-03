@@ -25,10 +25,6 @@ class ClassificationRCNN(nn.Module):
     def forward(self, x):
         # Extract features using the backbone
         x = self.resnet_backbone(x)
-        print(x['0'].shape)
-        print(x['1'].shape)
-        print(x['2'].shape)
-        print(x['3'].shape)
 
         # Use the output from the last layer
         x = x['3']  # Extracting the tensor with shape [batch_size, 2048, 7, 7]
