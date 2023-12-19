@@ -14,6 +14,10 @@ class ClassificationRCNN(nn.Module):
         # Extract the ResNet50 backbone
         self.resnet_backbone = faster_rcnn.backbone.body
         
+        # Freeze the ResNet backbone
+        for param in self.resnet_backbone.parameters():
+            param.requires_grad = False
+
         # Classification head
         self.ffn = nn.Sequential(
             nn.Linear(2048, 512),
